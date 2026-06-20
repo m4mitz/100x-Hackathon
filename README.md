@@ -13,10 +13,10 @@ A tool that finds the exact moment a learner's explanation stops being real unde
 3. Go to Settings > API, copy your **Project URL** and **anon public key**
 4. Go to Authentication > Settings, make sure "Enable email confirmations" is **OFF** (for hackathon speed)
 
-### 2. Get Anthropic API key
+### 2. Get Groq API key
 
-1. Go to [console.anthropic.com](https://console.anthropic.com)
-2. Create an API key (you need credits on your account)
+1. Go to [console.groq.com](https://console.groq.com)
+2. Create an API key
 
 ### 3. Deploy to Vercel
 
@@ -25,7 +25,7 @@ A tool that finds the exact moment a learner's explanation stops being real unde
 3. Add these environment variables:
    - `NEXT_PUBLIC_SUPABASE_URL` = your Supabase URL
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = your Supabase anon key
-   - `ANTHROPIC_API_KEY` = your Anthropic API key
+   - `GROQ_API_KEY` = your Groq API key
 4. Deploy
 
 ### 4. Two-user RLS test (Move 4)
@@ -37,12 +37,12 @@ A tool that finds the exact moment a learner's explanation stops being real unde
 
 ## Tech stack
 
-- Next.js (App Router) + Supabase (auth + RLS) + Vercel + Claude API
+- Next.js (App Router) + Supabase (auth + RLS) + Vercel + Groq API (Llama 3.3 70B)
 
 ## How it works
 
 1. Learner picks a concept and writes an explanation from first principles
-2. Claude finds the ONE sentence where understanding became a memorized label
-3. Claude generates a follow-up question that exposes the gap
+2. Groq (Llama 3.3 70B) finds the ONE sentence where understanding became a memorized label
+3. It generates a follow-up question that exposes the gap
 4. Learner tries to derive it again
 5. A HUMAN (not the LLM) judges whether the gap closed
